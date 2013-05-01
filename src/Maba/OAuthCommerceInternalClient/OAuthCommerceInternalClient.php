@@ -2,82 +2,74 @@
 
 namespace Maba\OAuthCommerceInternalClient;
 
-use Maba\OAuthCommerceClient\OAuthCommerceClient;
+use Maba\OAuthCommerceClient\BaseClient;
+use Maba\OAuthCommerceClient\Command;
 use Maba\OAuthCommerceInternalClient\Entity\ClientCredentials;
 use Guzzle\Http\Url;
 
-class OAuthCommerceInternalClient extends OAuthCommerceClient
+class OAuthCommerceInternalClient extends BaseClient
 {
-
     /**
      * @param ClientCredentials $client
      *
-     * @return ClientCredentials
+     * @return Command<ClientCredentials>
      */
     public function createCredentials(ClientCredentials $client)
     {
-        $response = $this->client
-            ->post('credentials')
-            ->setBody(json_encode($client->toArray()), 'application/json')
-            ->send()
-            ->json()
+        return $this->createCommand()
+            ->setRequest($this->client->post('credentials'))
+            ->setBodyEntity($client, 'json')
+            ->setResponseClass('Maba\OAuthCommerceInternalClient\Entity\ClientCredentials')
         ;
-        return ClientCredentials::fromArray($response);
     }
 
     /**
      * @param integer $id
      *
-     * @return ClientCredentials
+     * @return Command<ClientCredentials>
      */
     public function getCredentials($id)
     {
-        $response = $this->client
-            ->get('credentials/' . $id)
-            ->send()
-            ->json()
+        return $this->createCommand()
+            ->setRequest($this->client->get('credentials/' . $id))
+            ->setResponseClass('Maba\OAuthCommerceInternalClient\Entity\ClientCredentials')
         ;
-        return ClientCredentials::fromArray($response);
     }
 
     /**
      * @param integer $clientId
      *
-     * @return ClientCredentials[]
+     * @return Command<ClientCredentials[]>
      */
     public function getCredentialsByClientId($clientId)
     {
-        $response = $this->client
-            ->get(Url::factory('credentials')->setQuery(array('clientId' => $clientId)))
-            ->send()
-            ->json()
+        return $this->createCommand()
+            ->setRequest($this->client->get(Url::factory('credentials')->setQuery(array('clientId' => $clientId))))
+            ->setResponseClass('Maba\OAuthCommerceInternalClient\Entity\ClientCredentials[]')
         ;
-        $result = array();
-        foreach ($response as $clientResponse) {
-            $result[] = ClientCredentials::fromArray($clientResponse);
-        }
-        return $result;
     }
 
     /**
      * @param integer $clientId
+     *
+     * @return Command
      */
     public function removeCredentialsByClientId($clientId)
     {
-        $this->client
-            ->delete(Url::factory('credentials')->setQuery(array('clientId' => $clientId)))
-            ->send()
+        return $this->createCommand()
+            ->setRequest($this->client->delete(Url::factory('credentials')->setQuery(array('clientId' => $clientId))))
         ;
     }
 
     /**
      * @param integer $id
+     *
+     * @return Command
      */
     public function removeCredentials($id)
     {
-        $this->client
-            ->delete('credentials/' . $id)
-            ->send()
+        return $this->createCommand()
+            ->setRequest($this->client->delete('credentials/' . $id))
         ;
     }
 }

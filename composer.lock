@@ -7,16 +7,16 @@
     "packages": [
         {
             "name": "guzzle/guzzle",
-            "version": "v3.4.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "v3.4.0"
+                "reference": "cb8439f1ca209f764057d0e9c3f015333907a0f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/v3.4.0",
-                "reference": "v3.4.0",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/cb8439f1ca209f764057d0e9c3f015333907a0f0",
+                "reference": "cb8439f1ca209f764057d0e9c3f015333907a0f0",
                 "shasum": ""
             },
             "require": {
@@ -62,7 +62,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.3-dev"
+                    "dev-master": "3.4-dev"
                 }
             },
             "autoload": {
@@ -97,7 +97,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2013-04-12 05:58:15"
+            "time": "2013-05-01 06:04:08"
         },
         {
             "name": "maba-oauth-commerce/php-lib-base",
@@ -105,17 +105,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mariusbalcytis/oauth-commerce-lib-base.git",
-                "reference": "e88f1afeb5f26c243360a9d9fee4ae9aa3f05e71"
+                "reference": "7ec691acaea096f903cbd67619575e7d2ccfa930"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mariusbalcytis/oauth-commerce-lib-base/zipball/e88f1afeb5f26c243360a9d9fee4ae9aa3f05e71",
-                "reference": "e88f1afeb5f26c243360a9d9fee4ae9aa3f05e71",
+                "url": "https://api.github.com/repos/mariusbalcytis/oauth-commerce-lib-base/zipball/7ec691acaea096f903cbd67619575e7d2ccfa930",
+                "reference": "7ec691acaea096f903cbd67619575e7d2ccfa930",
                 "shasum": ""
             },
             "require": {
-                "guzzle/guzzle": "v3.4.0",
+                "guzzle/guzzle": "3.4.*",
                 "phpseclib/phpseclib": "0.3.1",
+                "symfony/dependency-injection": "2.2.*",
+                "symfony/serializer": "2.2.*",
                 "zendframework/zend-crypt": "2.1.4",
                 "zendframework/zend-math": "2.1.4"
             },
@@ -126,6 +128,9 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
             "authors": [
                 {
                     "name": "Marius Balčytis",
@@ -133,7 +138,7 @@
                 }
             ],
             "description": "PHP base library for OAuth-Commerce based API",
-            "time": "2013-04-29 21:52:14"
+            "time": "2013-05-01 15:35:41"
         },
         {
             "name": "phpseclib/phpseclib",
@@ -202,6 +207,61 @@
             "time": "2012-11-20 03:10:22"
         },
         {
+            "name": "symfony/dependency-injection",
+            "version": "2.2.x-dev",
+            "target-dir": "Symfony/Component/DependencyInjection",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/DependencyInjection.git",
+                "reference": "e0dab3fc8ae19857067d322347c8209e14cbd8ba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/DependencyInjection/zipball/e0dab3fc8ae19857067d322347c8209e14cbd8ba",
+                "reference": "e0dab3fc8ae19857067d322347c8209e14cbd8ba",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "symfony/config": ">=2.2,<2.3-dev",
+                "symfony/yaml": ">=2.0,<3.0"
+            },
+            "suggest": {
+                "symfony/config": "2.2.*",
+                "symfony/yaml": "2.2.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\DependencyInjection\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony DependencyInjection Component",
+            "homepage": "http://symfony.com",
+            "time": "2013-04-20 18:42:11"
+        },
+        {
             "name": "symfony/event-dispatcher",
             "version": "dev-master",
             "target-dir": "Symfony/Component/EventDispatcher",
@@ -254,6 +314,53 @@
             "description": "Symfony EventDispatcher Component",
             "homepage": "http://symfony.com",
             "time": "2013-02-11 11:27:01"
+        },
+        {
+            "name": "symfony/serializer",
+            "version": "2.2.x-dev",
+            "target-dir": "Symfony/Component/Serializer",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Serializer.git",
+                "reference": "v2.2.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Serializer/zipball/v2.2.1",
+                "reference": "v2.2.1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Serializer\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Serializer Component",
+            "homepage": "http://symfony.com",
+            "time": "2013-03-06 21:43:23"
         },
         {
             "name": "zendframework/zendframework",

@@ -33,39 +33,6 @@ class ClientCredentials
     }
 
     /**
-     * @param $data
-     *
-     * @throws \RuntimeException
-     * @return static
-     */
-    public static function fromArray($data)
-    {
-        if (!isset($data['id'])) {
-            return $data;
-        }
-        /** @var $clientCredentials ClientCredentials */
-        $clientCredentials = new static();
-        $clientCredentials->clientId = $data['clientId'];
-        $clientCredentials->credentialsId = $data['id'];
-        $clientCredentials->permissions = isset($data['permissions']) ? (array)$data['permissions'] : array();
-
-        $credentials = new SignatureCredentials();
-        $credentials->setAlgorithm($data['signParams']['type']);
-        $credentials->setMacKey($data['signParams']['secret']);
-        $credentials->setMacId($data['id']);
-        $clientCredentials->signatureCredentials = $credentials;
-
-        return $clientCredentials;
-    }
-
-    public function toArray()
-    {
-        return array(
-            'clientId' => $this->getClientId(),
-        );
-    }
-
-    /**
      * @param int $clientId
      *
      * @return $this
