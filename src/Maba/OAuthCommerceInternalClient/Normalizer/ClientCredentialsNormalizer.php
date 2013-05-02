@@ -35,11 +35,11 @@ class ClientCredentialsNormalizer implements NormalizerInterface, DenormalizerIn
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         return ClientCredentials::create()
-            ->setClientId($data['client_id'])
-            ->setCredentialsId($data['id'])
+            ->setId($data['id'])
+            ->setClientId($data['clientId'])
             ->setPermissions(isset($data['permissions']) ? (array)$data['permissions'] : array())
             ->setSignatureCredentials(
-                $this->algorithmManager->createSignatureCredentials($data['signature_credentials'])
+                $this->algorithmManager->createSignatureCredentials($data['signatureCredentials'])
             )
         ;
     }
@@ -55,7 +55,7 @@ class ClientCredentialsNormalizer implements NormalizerInterface, DenormalizerIn
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $data instanceof ClientCredentials;
+        return $type === 'Maba\OAuthCommerceInternalClient\Entity\ClientCredentials';
     }
 
     /**
@@ -65,13 +65,17 @@ class ClientCredentialsNormalizer implements NormalizerInterface, DenormalizerIn
      * @param string $format  format the normalization result will be encoded as
      * @param array  $context Context options for the normalizer
      *
-     * @return array|scalar
+     * @return array
      */
     public function normalize($object, $format = null, array $context = array())
     {
         /** @var ClientCredentials $object */
         return array(
-            'client_id' => $object->getClientId(),
+            'clientId' => $object->getClientId(),
+            'permissions' => $object->getPermissions(),
+            'signatureCredentials' => $this->algorithmManager->normalizeSignatureCredentials(
+                $object->getSignatureCredentials()
+            ),
         );
     }
 

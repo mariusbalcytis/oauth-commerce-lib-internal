@@ -8,24 +8,25 @@ use Maba\OAuthCommerceClient\Entity\SignatureCredentials;
 class ClientCredentials
 {
     /**
+     * @var string
+     */
+    protected $id;
+
+    /**
      * @var int
      */
     protected $clientId;
 
     /**
-     * @var string
+     * @var string[]
      */
-    protected $credentialsId;
+    protected $permissions = array();
 
     /**
      * @var \Maba\OAuthCommerceClient\Entity\SignatureCredentials
      */
     protected $signatureCredentials;
 
-    /**
-     * @var string[]
-     */
-    protected $permissions;
 
     public static function create()
     {
@@ -53,13 +54,13 @@ class ClientCredentials
     }
 
     /**
-     * @param string $credentialsId
+     * @param string $id
      *
      * @return $this
      */
-    public function setCredentialsId($credentialsId)
+    public function setId($id)
     {
-        $this->credentialsId = $credentialsId;
+        $this->id = $id;
 
         return $this;
     }
@@ -67,9 +68,9 @@ class ClientCredentials
     /**
      * @return string
      */
-    public function getCredentialsId()
+    public function getId()
     {
-        return $this->credentialsId;
+        return $this->id;
     }
 
     public function setPermissions($permissions)

@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "cb8439f1ca209f764057d0e9c3f015333907a0f0"
+                "reference": "6e48b4db00ba6a460378783860c0f4590231a43b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/cb8439f1ca209f764057d0e9c3f015333907a0f0",
-                "reference": "cb8439f1ca209f764057d0e9c3f015333907a0f0",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/6e48b4db00ba6a460378783860c0f4590231a43b",
+                "reference": "6e48b4db00ba6a460378783860c0f4590231a43b",
                 "shasum": ""
             },
             "require": {
@@ -97,7 +97,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2013-05-01 06:04:08"
+            "time": "2013-05-02 00:13:13"
         },
         {
             "name": "maba-oauth-commerce/php-lib-base",
@@ -105,12 +105,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mariusbalcytis/oauth-commerce-lib-base.git",
-                "reference": "7ec691acaea096f903cbd67619575e7d2ccfa930"
+                "reference": "1582398527527054d6aeedd134ac5905cfa6c147"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mariusbalcytis/oauth-commerce-lib-base/zipball/7ec691acaea096f903cbd67619575e7d2ccfa930",
-                "reference": "7ec691acaea096f903cbd67619575e7d2ccfa930",
+                "url": "https://api.github.com/repos/mariusbalcytis/oauth-commerce-lib-base/zipball/1582398527527054d6aeedd134ac5905cfa6c147",
+                "reference": "1582398527527054d6aeedd134ac5905cfa6c147",
                 "shasum": ""
             },
             "require": {
@@ -138,7 +138,7 @@
                 }
             ],
             "description": "PHP base library for OAuth-Commerce based API",
-            "time": "2013-05-01 15:35:41"
+            "time": "2013-05-02 16:01:03"
         },
         {
             "name": "phpseclib/phpseclib",
@@ -268,12 +268,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher.git",
-                "reference": "2e1fce7bb3ea06d9e42756f1dd3edf966420c755"
+                "reference": "v2.3.0-BETA1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/2e1fce7bb3ea06d9e42756f1dd3edf966420c755",
-                "reference": "2e1fce7bb3ea06d9e42756f1dd3edf966420c755",
+                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/v2.3.0-BETA1",
+                "reference": "v2.3.0-BETA1",
                 "shasum": ""
             },
             "require": {
