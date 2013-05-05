@@ -5,11 +5,12 @@ namespace Maba\OAuthCommerceInternalClient\DependencyInjection;
 
 use Maba\OAuthCommerceClient\MacSignature\RsaAlgorithm;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\DefinitionDecorator;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 
-class ContainerExtension implements ExtensionInterface
+class InternalClientExtension implements ExtensionInterface
 {
     /**
      * Loads a specific configuration.
@@ -30,6 +31,13 @@ class ContainerExtension implements ExtensionInterface
             ->setArguments(array(new Reference('maba_oauth_commerce.algorithm_manager')))
             ->addTag('maba_oauth_commerce.normalizer')
             ->setPublic(false)
+        ;
+        $container
+            ->setDefinition(
+                'maba_oauth_commerce.client.internal',
+                new DefinitionDecorator('maba_oauth_commerce.base_client')
+            )
+            ->setClass('Maba\OAuthCommerceInternalClient\OAuthCommerceInternalClient')
         ;
     }
 
