@@ -6,10 +6,25 @@ use Maba\OAuthCommerceClient\BaseClient;
 use Maba\OAuthCommerceClient\Command;
 use Maba\OAuthCommerceInternalClient\Entity\ApplicationCredentials;
 use Maba\OAuthCommerceInternalClient\Entity\ClientCredentials;
+use Maba\OAuthCommerceInternalClient\Entity\AccessTokenCode;
 use Guzzle\Http\Url;
 
 class OAuthCommerceInternalClient extends BaseClient
 {
+    /**
+     * @param AccessTokenCode $code
+     *
+     * @return Command<string>
+     */
+    public function createCode(AccessTokenCode $code)
+    {
+        return $this->createCommand()
+            ->setRequest($this->client->post('code'))
+            ->setBodyEntity($code, 'json')
+            ->setResponseClass('Maba\OAuthCommerceInternalClient\Entity\AccessTokenCode')
+        ;
+    }
+
     /**
      * @param ClientCredentials $client
      *
