@@ -23,6 +23,8 @@ class InternalClientExtension implements ExtensionInterface
      */
     public function load(array $config, ContainerBuilder $container)
     {
+        $container->setParameter('maba_oauth_commerce.internal_client.default_base_url', null);
+
         $container
             ->register(
                 'maba_oauth_commerce.normalizer.client_credentials',
@@ -34,10 +36,11 @@ class InternalClientExtension implements ExtensionInterface
         ;
         $container
             ->setDefinition(
-                'maba_oauth_commerce.client.internal',
-                new DefinitionDecorator('maba_oauth_commerce.base_client')
+                'maba_oauth_commerce.factory.internal',
+                new DefinitionDecorator('maba_oauth_commerce.factory.base')
             )
-            ->setClass('Maba\OAuthCommerceInternalClient\OAuthCommerceInternalClient')
+            ->addMethodCall('setDefaultBaseUrl', array('%maba_oauth_commerce.internal_client.default_base_url%'))
+            ->setClass('Maba\OAuthCommerceInternalClient\InternalClientFactory')
         ;
     }
 

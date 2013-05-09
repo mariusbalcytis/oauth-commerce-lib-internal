@@ -4,12 +4,12 @@ namespace Maba\OAuthCommerceInternalClient;
 
 use Maba\OAuthCommerceClient\BaseClient;
 use Maba\OAuthCommerceClient\Command;
-use Maba\OAuthCommerceInternalClient\Entity\ApplicationCredentials;
+use Maba\OAuthCommerceInternalClient\Entity\ApplicationPassword;
 use Maba\OAuthCommerceInternalClient\Entity\ClientCredentials;
 use Maba\OAuthCommerceInternalClient\Entity\AccessTokenCode;
 use Guzzle\Http\Url;
 
-class OAuthCommerceInternalClient extends BaseClient
+class InternalClient extends BaseClient
 {
     /**
      * @param AccessTokenCode $code
@@ -21,7 +21,6 @@ class OAuthCommerceInternalClient extends BaseClient
         return $this->createCommand()
             ->setRequest($this->client->post('code'))
             ->setBodyEntity($code, 'json')
-            ->setResponseClass('Maba\OAuthCommerceInternalClient\Entity\AccessTokenCode')
         ;
     }
 
@@ -90,36 +89,36 @@ class OAuthCommerceInternalClient extends BaseClient
     }
 
     /**
-     * @param ApplicationCredentials $application
+     * @param ApplicationPassword $application
      *
-     * @return Command<ApplicationCredentials>
+     * @return Command<ApplicationPassword>
      */
-    public function createApplicationCredentials(ApplicationCredentials $application)
+    public function createApplicationPassword(ApplicationPassword $application)
     {
         return $this->createCommand()
             ->setRequest($this->client->post('application'))
             ->setBodyEntity($application, 'json')
-            ->setResponseClass('Maba\OAuthCommerceInternalClient\Entity\ApplicationCredentials')
+            ->setResponseClass('Maba\OAuthCommerceInternalClient\Entity\ApplicationPassword')
         ;
     }
 
     /**
      * @param integer $id
      *
-     * @return Command<ApplicationCredentials>
+     * @return Command<ApplicationPassword>
      */
-    public function getApplicationCredentials($id)
+    public function getApplicationPassword($id)
     {
         return $this->createCommand()
             ->setRequest($this->client->get('application/' . $id))
-            ->setResponseClass('Maba\OAuthCommerceInternalClient\Entity\ApplicationCredentials')
+            ->setResponseClass('Maba\OAuthCommerceInternalClient\Entity\ApplicationPassword')
         ;
     }
 
     /**
      * @param integer $applicationId
      *
-     * @return Command<ApplicationCredentials[]>
+     * @return Command<ApplicationPassword[]>
      */
     public function getCredentialsByApplicationId($applicationId)
     {
@@ -127,7 +126,7 @@ class OAuthCommerceInternalClient extends BaseClient
             ->setRequest(
                 $this->client->get(Url::factory('application')->setQuery(array('applicationId' => $applicationId)))
             )
-            ->setResponseClass('Maba\OAuthCommerceInternalClient\Entity\ApplicationCredentials[]')
+            ->setResponseClass('Maba\OAuthCommerceInternalClient\Entity\ApplicationPassword[]')
         ;
     }
 
@@ -150,7 +149,7 @@ class OAuthCommerceInternalClient extends BaseClient
      *
      * @return Command
      */
-    public function removeApplicationCredentials($id)
+    public function removeApplicationPassword($id)
     {
         return $this->createCommand()
             ->setRequest($this->client->delete('application/' . $id))

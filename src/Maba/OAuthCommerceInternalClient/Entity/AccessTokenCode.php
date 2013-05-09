@@ -38,12 +38,15 @@ class AccessTokenCode
     }
 
     /**
-     * @param \DateTime $expires
+     * @param integer|\DateTime $expires
      *
      * @return $this
      */
     public function setExpires($expires)
     {
+        if ($expires !== null && !$expires instanceof \DateTime) {
+            $expires = new \DateTime('@' . $expires);
+        }
         $this->expires = $expires;
 
         return $this;

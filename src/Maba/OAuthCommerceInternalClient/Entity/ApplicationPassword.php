@@ -4,7 +4,7 @@
 namespace Maba\OAuthCommerceInternalClient\Entity;
 
 
-class ApplicationCredentials
+class ApplicationPassword
 {
     /**
      * @var integer
